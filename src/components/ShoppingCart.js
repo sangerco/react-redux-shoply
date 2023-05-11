@@ -6,6 +6,7 @@ import './ShoppingCart.css';
 const ShoppingCart = () => {
     let cart;
     let cartIds;
+    let cartValue;
     let products;
     let productIds;
     let cartProductArray = [];
@@ -13,8 +14,9 @@ const ShoppingCart = () => {
   
     cart = useSelector(state => state.cartItems)
     products = useSelector(state => state.products)
+    cartValue = useSelector(state => state.cartValue)
 
-    console.log(cart)
+    console.log(cartValue)
 
     if (cart === undefined || Object.values(cart).length === 0) {
       return (
@@ -37,18 +39,28 @@ const ShoppingCart = () => {
     
 
     return (
-      cartProductArray.map(c => 
-        <div key={c}>            
-            <CartItem 
-                id={c}
-                price={products[c].price}
-                name={products[c].name}
-                description={products[c].description}
-                image_url={products[c].image_url}
-                quantity={cart[c]}
-            />
+      <div>
+        <div>
+          {cartProductArray.map(c => 
+            <div key={c}>            
+                <CartItem 
+                    id={c}
+                    price={products[c].price}
+                    name={products[c].name}
+                    description={products[c].description}
+                    image_url={products[c].image_url}
+                    quantity={cart[c]}
+                />
+            </div>
+            )}
         </div>
-        )
+        <div className="ui divider"></div>
+        <div className="ui segment">
+          <div className='ui floated left'><h3>Cart Total: {cartValue.toFixed(2)}</h3></div>
+        </div>
+        <div className="ui divider"></div>
+      </div>
+      
     )
   
 }
