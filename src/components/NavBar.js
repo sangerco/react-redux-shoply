@@ -6,8 +6,8 @@ const NavBar = () => {
     return (
         <div className="NavBar">
             <nav>
-                <NavLink exact to='/'>Products</NavLink>
-                <NavLink exact to='/cart'>Shopping Cart</NavLink>
+                <NavLink exact="true" to='/'>Products</NavLink>
+                <NavLink exact="true" to='/cart'>Shopping Cart</NavLink>
             </nav>
         </div>
 

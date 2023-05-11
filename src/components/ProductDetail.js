@@ -8,10 +8,6 @@ const ProductDetail = ({ productId, name, price, description, image_url }) => {
     const dispatch = useDispatch();
     let foundProduct = [];
 
-    const addToCart = (e) => {
-        dispatch(addProduct(id))
-    }
-
     const { id } = useParams();
 
     const products = useSelector(state => state.products);
@@ -23,10 +19,14 @@ const ProductDetail = ({ productId, name, price, description, image_url }) => {
         }
     }
 
+    const addToCart = (e) => {
+        dispatch(addProduct(id))
+        alert(`Item added to Shopping Cart!`)
+    }
 
     return (
         foundProduct.map(f => 
-            <div className='ui fluid card' key={ products[f].id }>
+            <div className='ui fluid card' key={ f }>
                 <div className="image">
                     <img src={ products[f].image_url } alt={ products[f].name } width='500px' />
                 </div>

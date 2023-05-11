@@ -15,8 +15,8 @@ const ShoppingCart = () => {
     products = useSelector(state => state.products)
 
     console.log(cart)
-  
-    if (cart === undefined) {
+
+    if (cart === undefined || Object.values(cart).length === 0) {
       return (
         <div className="header-box">
           <h3>You have not put anything in your cart yet!</h3>
@@ -35,20 +35,19 @@ const ShoppingCart = () => {
       }
     }
     
-    let quantities = Object.values(cart)
-    console.log(quantities)
 
     return (
       cartProductArray.map(c => 
-        <li key={c}>            
+        <div key={c}>            
             <CartItem 
                 id={c}
                 price={products[c].price}
                 name={products[c].name}
                 description={products[c].description}
                 image_url={products[c].image_url}
+                quantity={cart[c]}
             />
-        </li>
+        </div>
         )
     )
   

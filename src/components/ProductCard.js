@@ -1,7 +1,13 @@
 import React from "react";
-
+import { useNavigate } from "react-router-dom";
 
 const ProductCard = ({ productId, name, image_url }) => {
+
+    const navigate = useNavigate();
+
+    const handleClick = () => {
+        navigate(`/products/${productId}`)
+    }
 
 
     return (
@@ -13,7 +19,7 @@ const ProductCard = ({ productId, name, image_url }) => {
                 <div className="header">{ name }</div>
             </div>
             <div className="extra content">
-                <a href={`/products/${productId}`}>See More</a>
+                <button className='ui button' onClick={handleClick}>See More</button>
             </div>
         </div>
     )
